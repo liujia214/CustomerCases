@@ -1,0 +1,33 @@
+body {
+}
+
+a {
+  color: #00B7FF;
+}
+.content{
+  background-color: #f6f6f6;
+}
+.odd{
+  background-color: white;
+}
+md-list-item{
+  min-height: 38px;
+}
+md-toolbar{
+  background-color: #0091ea !important;
+}
+.tablehead{
+  font-weight: bold;
+}
+.gradient{
+  background: linear-gradient(rgb(252, 252, 252), #f1f1f1);
+}
+md-input-container{
+  padding-bottom: 0px;
+}
+.padding-right{
+  padding-right: 10px;
+}
+.margin{
+  margin: 10px 0!important;
+}

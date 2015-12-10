@@ -1,0 +1,21 @@
+<md-dialog ng-cloak="">
+    <section ng-repeat="detail in details">
+        <div style="width: 100%;background-color: #0091ea" class="md-padding">
+            {{detail.incidentId}}
+        </div>
+        <md-list layout-padding>
+            <md-list-item class="margin">
+                <span class="tablehead padding-right">Description:</span> {{detail.issue}}
+            </md-list-item>
+            <md-list-item class="margin">
+                <span class="tablehead padding-right">Description:</span> {{detail.description}}
+            </md-list-item>
+            <md-list-item class="margin">
+                <span class="tablehead padding-right">Reason:</span> {{detail.reason}}
+            </md-list-item>
+            <md-list-item class="margin">
+                <span class="tablehead padding-right">TargetDate:</span> {{detail.targetDate}}
+            </md-list-item>
+        </md-list>
+    </section>
+</md-dialog>

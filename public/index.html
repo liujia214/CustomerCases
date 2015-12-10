@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html ng-app="incidentApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.2/angular-material.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <md-toolbar class="md-padding">
+        <div style="font-size: 24px">Customer Cases</div>
+    </md-toolbar>
+    <md-content ng-controller="IncidentController">
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="CapCases">
+                <md-content class="md-padding gradient" ng-class="{content:true}">
+                    <div style="padding: 0 16px" layout="row">
+                        <span flex="5"></span>
+                        <span flex="15" class="tablehead">Customer Name</span>
+                        <span flex class="tablehead">Problem</span>
+                        <span flex class="tablehead">Reason</span>
+                        <span flex="10" class="tablehead">Status</span>
+                        <span flex="10" class="tablehead">Date</span>
+                        <span flex class="tablehead">Next step</span>
+                        <span flex="10" class="tablehead">Detail</span>
+                    </div>
+                    <md-list>
+                        <md-list-item ng-repeat="customer in criticalCustomers | orderBy: 'date'" layout="row" ng-class="{odd:$even}" class="md-hue-1" >
+                            <span flex="5">{{$index +1}}</span>
+                            <span flex="15">{{customer.name}}</span>
+                            <span flex>{{customer.problem}}</span>
+                            <span flex>{{customer.reason}}</span>
+                            <span flex="10">{{customer.status}}</span>
+                            <span flex="10">{{customer.date}}</span>
+                            <span flex>{{customer.next}}</span>
+                            <a flex="10" ng-click="getDetail(customer,$event)">detail</a>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </md-tab>
+            <md-tab label="HotCases">
+                <md-content class="md-padding gradient" ng-class="{content:true}">
+                    <div style="padding: 0 16px" layout="row">
+                        <span flex="5"></span>
+                        <span flex="15" class="tablehead">Customer Name</span>
+                        <span flex class="tablehead">Problem</span>
+                        <span flex class="tablehead">Reason</span>
+                        <span flex="10" class="tablehead">Status</span>
+                        <span flex="10" class="tablehead">Date</span>
+                        <span flex class="tablehead">Next step</span>
+                        <span flex="10" class="tablehead">Detail</span>
+                    </div>
+                    <md-list>
+                        <md-list-item ng-repeat="customer in hotCustomers | orderBy: 'date'" layout="row" ng-class="{odd:$even}" class="md-hue-1" >
+                            <span flex="5">{{$index+1}}</span>
+                            <span flex="15">{{customer.name}}</span>
+                            <span flex>{{customer.problem}}</span>
+                            <span flex>{{customer.reason}}</span>
+                            <span flex="10">{{customer.status}}</span>
+                            <span flex="10">{{customer.date}}</span>
+                            <span flex>{{customer.next}}</span>
+                            <span flex="10"><a>detail</a></span>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </md-tab>
+            <md-tab label="Admin">
+                <md-content class="md-padding gradient" ng-class="{content:true}">
+                    <div layout="row">
+                        <md-input-container>
+                            <md-select ng-model="type" flex="10">
+                                <md-option ng-repeat="type in types" value="{{type}}" ng-selected="$first">
+                                    {{type}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <span flex="80"></span>
+                        <md-button class="md-raised md-primary">Save</md-button>
+                        <md-button class="md-raised md-accent" ng-click="remove(type)">Remove</md-button>
+                    </div>
+
+                    <md-content class="">
+                        <ng-switch on="type">
+                            <div ng-switch-when="CAP" layout="row" layout-sm="column">
+                                <md-list>
+                                    <md-list-item ng-repeat="customer in criticalCustomers">
+                                        <md-checkbox ng-model="customer.delete"></md-checkbox>
+                                        <md-input-container>
+                                            <input ng-model="customer.name">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.problem">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.reason">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.status">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.date">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.next">
+                                        </md-input-container>
+                                    </md-list-item>
+                                </md-list>
+                            </div>
+                            <div ng-switch-when="HOT">
+                                <md-list>
+                                    <md-list-item ng-repeat="customer in hotCustomers">
+                                        <md-checkbox ng-model="customer.delete"></md-checkbox>
+                                        <md-input-container>
+                                            <input ng-model="customer.name">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.problem">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.reason">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.status">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.date">
+                                        </md-input-container>
+                                        <md-input-container>
+                                            <input ng-model="customer.next">
+                                        </md-input-container>
+                                    </md-list-item>
+                                </md-list>
+                            </div>
+                        </ng-switch>
+                    </md-content>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.11.2/angular-material.js"></script>
+    <script src="./javascripts/app.js"></script>
+</body>
+</html>

@@ -1,20 +1,20 @@
 <md-dialog ng-cloak="" layout="column">
     <div ng-repeat="detail in details">
-        <div style="width: 100%;background-color: #0091ea" class="md-padding">
+        <section style="width: 100%;background-color: #0091ea;" class="md-padding">
             {{detail.incidentId}}
-        </div>
+        </section>
         <md-list layout-padding>
-            <md-list-item class="margin" layout="row">
-                <span class="tablehead padding-right" flex-sm="20" flex-gt-sm="10">Issue:</span> {{detail.issue}}
+            <md-list-item class="margin">
+                <span class="tablehead padding-right" flex-sm="20" flex-gt-sm="10">Issue:</span><span flex="">{{detail.issue}}</span>
             </md-list-item>
             <md-list-item class="margin">
-                <span class="tablehead padding-right" flex-sm="20" flex-gt-sm="10">Description:</span> {{detail.description}}
+                <span class="tablehead padding-right" flex-sm="20" flex-gt-sm="10">Description:</span> <span flex="">{{detail.description}}</span>
             </md-list-item>
             <md-list-item class="margin">
-                <span class="tablehead padding-right" flex-sm="20" flex-gt-sm="10">Reason:</span> {{detail.reason}}
+                <span class="tablehead padding-right" flex-sm="20" flex-gt-sm="10">Reason:</span> <span flex="">{{detail.reason}}</span>
             </md-list-item>
             <md-list-item class="margin">
-                <span class="tablehead padding-right" flex-sm="20" flex-gt-sm="10">TargetDate:</span> {{detail.targetDate}}
+                <span class="tablehead padding-right" flex-sm="20" flex-gt-sm="10">TargetDate:</span> <span flex="">{{detail.targetDate}}</span>
             </md-list-item>
         </md-list>
     </div>
